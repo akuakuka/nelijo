@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <title>Neliö</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            background: #200122;
+            background: -webkit-linear-gradient(to right, #200122, #6f0000);
+            background: linear-gradient(to right, #200122, #6f0000);
+        }
+
+        .square {
+            border-radius: 25px;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background: rgb(73, 33, 33)
+        }
+
+        .square:hover {
+            background-color: #3e8e41
+        }
+
+        .square:active {
+            background-color: #c92dc1;
+            box-shadow: 0 5px rgb(26, 138, 153);
+            transform: translateY(20px) translateX(20px);
+        }
+    </style>
+    <script type="application/javascript">
+        let sayTimeout = null;
+        const nelioToSpeech = () => {
+            const synth = window.speechSynthesis;
+            voices = synth.getVoices();
+            const Utterance = new SpeechSynthesisUtterance("neliö");
+            if (synth.speaking) {
+                synth.cancel();
+                setTimeout(() => { synth.speak(Utterance); }, 250);
+            }
+            else {
+                synth.speak(Utterance);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="square" onclick="nelioToSpeech()"></div>
+    </main>
+
+
+</body>
+
+</html>
